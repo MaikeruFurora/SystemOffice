@@ -65,7 +65,7 @@
 
 {{-- <body style=" background: #fdf1f5"> --}}
 
-<body>
+<body style="background: #FAFBFC">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

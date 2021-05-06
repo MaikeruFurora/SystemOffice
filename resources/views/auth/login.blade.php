@@ -98,7 +98,7 @@
 {{-- <body style="background-image: url('{{ asset('img/intro1.jpg') }}');background-repeat:no-repeat;background-size:cover">
 --}}
 
-<body>
+<body style="background: #FAFBFC">
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 text-left center-screen">
