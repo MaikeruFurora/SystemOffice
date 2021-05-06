@@ -129,16 +129,18 @@
 
                     </form>
                 </div>
-                <div class="btn-group m-0 shadow" role="group" aria-label="Basic example">
-                    <button type="button" id="In" class="printReport btn btn-sm btn-secondary"
-                        style="font-size: 13px">Transfer
-                        In</button>
-                    <button type="button" id="Out" class="printReport btn btn-sm btn-secondary"
-                        style="font-size: 13px">Transfer
-                        Out</button>
-                </div>
+                
                 <div class="row">
+                    
                     <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="btn-group shadow float-left" role="group" aria-label="Basic example">
+                            <button type="button" id="In" class="printReport btn btn-sm btn-secondary"
+                                style="font-size: 13px">Transfer
+                                <b>IN</b></button>
+                            <button type="button" id="Out" class="printReport btn btn-sm btn-secondary"
+                                style="font-size: 13px">Transfer
+                                <b>OUT</b></button>
+                        </div>
                         <table id="example"
                             class="mt-0 table table-striped table-bordered dt-responsive nowrap lead shadow"
                             style="width:100%;font-size:12px">
