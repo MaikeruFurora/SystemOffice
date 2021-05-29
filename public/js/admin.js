@@ -307,10 +307,10 @@ $(function () {
         fetchYear(yearChange);
         countWholeYear(yearChange);
         if (parseInt(currentYear.toString().substr(-2)) == yearChange) {
-            $("#cardForm").show("right");
+            $("#cardForm").show();
             $("#benefit").removeClass("col-lg-12").addClass("col-lg-8");
         } else {
-            $("#cardForm").hide("left");
+            $("#cardForm").hide();
             $("#benefit").removeClass("col-lg-8").addClass("col-lg-12");
         }
     });
