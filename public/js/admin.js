@@ -185,7 +185,7 @@ $(function () {
                             flip_to_front
                             </span>
                             <div class="card-body p-3">
-                                <p>${
+                                <p class="text-monospace">${
                                     monthNames[val - 1]
                                 }</p>
                                 <p class="card-text" id="countEveryMonth_${i}"><span class="spinner-border spinner-border-sm text-success" style="width:.6em;height:.6em" role="status" aria-hidden="true"></span><small> Loading...</small> </p>
@@ -197,16 +197,19 @@ $(function () {
                 countPerMonth(val, yearChange, i);
                 // }, 1000);
             });
-        $("#showMonth").html(hold);
+            $("#showMonth").html(hold);
     };
-
+    $(".centerSpinner").removeClass("spinner-grow");
     let fetchYear = (yearChange) => {
+        $("#showMonth").hide();
+        $("#showMonth").html(``);
         $.ajax({
             url: "transfer-filterYear/" + yearChange,
             type: "GET",
             dataType: "json",
         })
             .done(function (data) {
+                
                 const array_months = [];
                 data.forEach((val) => {
                     y = val.t_date.split("/");
@@ -221,15 +224,21 @@ $(function () {
                                    <em><small class="">No Available Data</small></em>
                                 </div>`);
                 } else {
-                    $("#showMonth")
-                        .html(`<div class="col-md-1 offset-md-5 py-5">
-                                <div class="spinner-border spinner-border-sm text-info" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div>`);
+                    $(".centerSpinner").addClass("spinner-grow");
+                    // $("#showMonth")
+                    //     .html(`<div class="col-md-1 offset-md-5 py-5">
+                    //             <div class="spinner-border spinner-border-sm text-info" role="status">
+                    //                 <span class="sr-only">Loading...</span>
+                    //             </div>
+                    //         </div>`);
                     setTimeout(() => {
-                        spreadMonth(fitleredAndSorted);
-                    }, 1000);
+                        $("#showMonth").show();
+                        $('#showMonth').fadeOut('slow', function(){
+                            $("#showMonth").fadeIn(1500);
+                            spreadMonth(fitleredAndSorted);
+                            });
+                        $(".centerSpinner").removeClass("spinner-grow");
+                    }, 2000);
                 }
             })
             .fail(function (jqxHR, textStatus, errorTHrown) {
@@ -245,32 +254,37 @@ $(function () {
      *
      */
     const countWholeYear = (year) => {
-        $("#totalNumberPerYear").html(``);
-        setTimeout(() => {
+        // $("#totalNumberPerYear").html(``);
+        $("#totalNumberOfInPerYear").text(``);
+        $("#totalNumberOfOutPerYear").text(``);
+        // setTimeout(() => {
             $.ajax({
                 url: "transfer-wholeYear/" + year,
                 type: "GET",
                 dataType: "json",
+                beforeSend: function () {
+                    $("#totalNumberOfInPerYear").html(`0`);
+                    $("#totalNumberOfOutPerYear").html(`0`);
+                }
             })
                 .done(function (data) {
                     if (data[1] == undefined && data[0] == undefined) {
-                        $("#totalNumberPerYear").html("");
+                        // $("#totalNumberPerYear").html("");
+                        $("#totalNumberOfInPerYear").html(``);
+                        $("#totalNumberOfOutPerYear").html(``);
+                        $("#totalNumberOfInPerYear").text(``);
+                        $("#totalNumberOfOutPerYear").text(``);
                     } else {
-                        $("#totalNumberPerYear")
-                            .html(`Total Numbers of Transfer In: <span
-                        class="badge badge-secondary">${
-                            data[1] == undefined ? 0 : data[1].total
-                        }</span> and Out:
-                    <span class="badge badge-secondary">${
-                        data[0] == undefined ? 0 : data[0].total
-                    }</span> of the year
-                    20${year}`);
+                        $("#totalNumberOfInPerYear")
+                            .text(data[1] == undefined ? 0 : data[1].total);
+                        $("#totalNumberOfOutPerYear")
+                            .text(data[0] == undefined ? 0 : data[0].total);
                     }
                 })
                 .fail(function (jqxHR, textStatus, errorTHrown) {
                     console.log(jqxHR, textStatus, errorTHrown);
                 });
-        }, 1000);
+        // }, 1000);
     };
     countWholeYear(currentYear.toString().substr(-2));
 
@@ -287,7 +301,7 @@ $(function () {
         })
             .done(function (data) {
                 data.forEach((val, i) => {
-                    console.log(val[0], val[1]);
+                    /**console.log(val[0], val[1]);*/
                     $("#countEveryMonth_" + index)
                         .html(`<small class="text-muted" style="font-size:11px">Transfer In: <span
                     class="badge badge-secondary">${
@@ -302,15 +316,21 @@ $(function () {
                 console.log(jqxHR, textStatus, errorTHrown);
             });
     };
+    $("#cardForm").hide();
+    setTimeout(() => {
+        $("#cardForm").fadeIn(1000);
+    },2000);
     $("#dropdownYear").on("change", function () {
         yearChange = $(this).val();
         fetchYear(yearChange);
         countWholeYear(yearChange);
         if (parseInt(currentYear.toString().substr(-2)) == yearChange) {
-            $("#cardForm").show();
+            setTimeout(() => {
+                $("#cardForm").fadeIn(1000);
+            },1500);
             $("#benefit").removeClass("col-lg-12").addClass("col-lg-8");
         } else {
-            $("#cardForm").hide();
+            $("#cardForm").fadeOut(900);
             $("#benefit").removeClass("col-lg-8").addClass("col-lg-12");
         }
     });

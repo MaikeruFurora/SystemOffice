@@ -1,7 +1,20 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+        <div class="centerSpinner spinner-grow text-info" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    <div class="row">
+        <div class="col-md-6 mt-4" style="font-size:12px">
+            <p>Total Numbers of Transfer In: <span id="totalNumberOfInPerYear" class="badge badge-secondary"></span> and Out: <span id="totalNumberOfOutPerYear" class="badge badge-secondary"></span> of the year</p>
+        </div>
+        <div id="" class="col-md-3 offset-md-3">
+            <select name="" id="dropdownYear" class="form-control-sm form-control mt-2 mb-2">
+            </select>
+        </div>
+    </div>
     <div class="row mt-3">
+       
         <div class="col-lg-4 col-md-12 col-sm-12">
             <form id="transferForm">
                 <div id="cardForm" class="card shadow">
@@ -103,14 +116,7 @@
             </form>
         </div>
         <div id="benefit" class="col-lg-8 col-md-12 col-sm-12">
-            <div class="row">
-                <div class="col-md-6 mt-4" style="font-size:12px">
-                    <p id="totalNumberPerYear"></p>
-                </div>
-                <div class="col-md-3 offset-md-3">
-                    <select name="" id="dropdownYear" class="form-control-sm form-control mt-2 mb-2">
-                    </select></div>
-            </div>
+            
             <div class="row" id="showMonth"></div>
 
         </div>

@@ -24,41 +24,12 @@
     <!-- Fonts -->
     {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
-    <style>
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: transparent;
-            color: white;
-            text-align: center;
-        }
-
-        .cards:hover {
-            border: 1.1px solid #0099ff;
-            /* background: #e6f5ff; */
-        }
-
-        .paginate {
-            padding: 1px
-        }
-
-        /* .btn-group {
-            margin-top: -3px;
-            z-index: 1;
-            opacity: 0;
-        }
-
-        .card-hover:hover .btn-group {
-            opacity: 1;
-        } */
-    </style>
     <!-- Styles -->
     <link href="{{ asset('iconfont/material-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hover-min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.bootstrap4.min.css') }}">
 </head>
