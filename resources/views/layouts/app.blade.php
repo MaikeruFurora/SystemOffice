@@ -36,13 +36,13 @@
 
 {{-- <body style=" background: #fdf1f5"> --}}
 
-<body style="background: #FAFBFC">
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<body>
+    {{-- <div id="app"> --}}
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background: #0C0636">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    TiTo Management System <small class="text-muted" style="font-size: 12px"><em>Transfer In & Transfer
-                            Out</em></small>
+                    TiTo Management System 
+                    {{-- <small class="" style="font-size: 12px"><em>Transfer In & Transfer Out</em></small> --}}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -101,8 +101,8 @@
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
-    <footer class="footer mt-auto py-1">
+    {{-- </div> --}}
+    <footer class="footer py-1">
         <span class="text-muted" style="font-size:13px">Created By Michael Flora</span>
     </footer>
 </body>

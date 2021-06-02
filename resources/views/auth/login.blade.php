@@ -98,21 +98,21 @@
 {{-- <body style="background-image: url('{{ asset('img/intro1.jpg') }}');background-repeat:no-repeat;background-size:cover">
 --}}
 
-<body style="background: #FAFBFC">
+<body style="background: #aabdb3">
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 text-left center-screen">
                 <form method="POST" action="{{ route('login') }}">
-                    <div class="card p-2 shadow-lg">
+                    <div class="card p-2 shadow-lg" style="background: #095169">
                         <div class="card-body">
-                            <p class="lead text-center mb-2" style="font-size: 25px">Sign in <br>
-                                <small class="lead text-center" style="font-size: 15px">to continue to
+                            <p class="lead text-center mb-2" style="font-size: 25px;color:white">Sign in <br>
+                                <small class="lead text-center" style="font-size: 15px;color:white">to continue to
                                     Application</small></p>
 
                             {{-- <img class="card-img-top" src="{{ asset('img/1.png') }}" alt=""> --}}
                             @csrf
                             <div class="form-group">
-                                <label class="lead" style="font-size: 15px" for="username">Username</label>
+                                <label class="lead" style="font-size: 15px;color:white" for="username">Username</label>
                                 <input id="username" type="text"
                                     class="form-control @error('username') is-invalid @enderror" name="username"
                                     value="{{ old('username') }}" required autocomplete="username" autofocus>
@@ -123,7 +123,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="lead" style="font-size: 15px" for="exampleInputPassword1">Password</label>
+                                <label class="lead" style="font-size: 15px;color:white" for="exampleInputPassword1">Password</label>
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
                                     required autocomplete="current-password">
@@ -138,7 +138,7 @@
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                     {{ old('remember') ? 'checked' : '' }}>
 
-                                <label class="form-check-label lead" style="font-size: 14px" for="remember">
+                                <label class="form-check-label lead" style="font-size: 14px;color:white" for="remember">
                                     {{ __('Remember Me') }}
                                 </label>
                             </div>

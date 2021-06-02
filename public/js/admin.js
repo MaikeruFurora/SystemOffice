@@ -178,17 +178,17 @@ $(function () {
                 // $(".display").attr("id", "example_" + val);
 
                 hold += `<div class="col-md-4 col-sm-12 mt-3">
-                            <div class="card cards processClick hvr-grow shadow" style="cursor:pointer;width:100%;" id="${
+                            <div class="card cards processClick hvr-grow shadow btn-grad" style="cursor:pointer;width:100%;" id="${
                                 val - 1
                             }">
-                            <span style="font-size:20px;color:#ccccb3" class="float-right hvr-grow m-0 p-0 material-icons">
+                            <span style="font-size:20px;" class="float-right hvr-grow m-0 p-0 material-icons mt-1 mr-1">
                             flip_to_front
                             </span>
                             <div class="card-body p-3">
-                                <p class="text-monospace">${
+                                <p class="text-monospace" style="text-transform: uppercase;">${
                                     monthNames[val - 1]
                                 }</p>
-                                <p class="card-text" id="countEveryMonth_${i}"><span class="spinner-border spinner-border-sm text-success" style="width:.6em;height:.6em" role="status" aria-hidden="true"></span><small> Loading...</small> </p>
+                                <p class="card-text" id="countEveryMonth_${i}"><span class="spinner-grow text-warning" style="width:.6em;height:.6em" role="status" aria-hidden="true"></span><small> Loading...</small> </p>
                             </div>
                             
                             </div>
@@ -257,14 +257,16 @@ $(function () {
         // $("#totalNumberPerYear").html(``);
         $("#totalNumberOfInPerYear").text(``);
         $("#totalNumberOfOutPerYear").text(``);
+        $("#ofTheYear").text(``);
         // setTimeout(() => {
             $.ajax({
                 url: "transfer-wholeYear/" + year,
                 type: "GET",
                 dataType: "json",
                 beforeSend: function () {
-                    $("#totalNumberOfInPerYear").html(`0`);
-                    $("#totalNumberOfOutPerYear").html(`0`);
+                    $("#totalNumberOfInPerYear").html(`00`);
+                    $("#totalNumberOfOutPerYear").html(`00`);
+                    $("#ofTheYear").html(`0000`);
                 }
             })
                 .done(function (data) {
@@ -274,11 +276,13 @@ $(function () {
                         $("#totalNumberOfOutPerYear").html(``);
                         $("#totalNumberOfInPerYear").text(``);
                         $("#totalNumberOfOutPerYear").text(``);
+                        $("#ofTheYear").text(``);
                     } else {
                         $("#totalNumberOfInPerYear")
-                            .text(data[1] == undefined ? 0 : data[1].total);
+                            .text(data[1] == undefined ? 00 : data[1].total.toString().length == 1? '0'+data[1].total: data[1].total);
                         $("#totalNumberOfOutPerYear")
-                            .text(data[0] == undefined ? 0 : data[0].total);
+                            .text(data[0] == undefined ? 00 : data[0].total.toString().length == 1? '0'+data[0].total: data[0].total);
+                        $("#ofTheYear").text('20'+year);
                     }
                 })
                 .fail(function (jqxHR, textStatus, errorTHrown) {
@@ -303,11 +307,11 @@ $(function () {
                 data.forEach((val, i) => {
                     /**console.log(val[0], val[1]);*/
                     $("#countEveryMonth_" + index)
-                        .html(`<small class="text-muted" style="font-size:11px">Transfer In: <span
-                    class="badge badge-secondary">${
+                        .html(`<small  style="font-size:11px">Transfer in: <span
+                    class="badge badge-light">${
                         val[1] == undefined ? 0 : val[1].total
-                    }</span> | Transfer Out: <span
-                    class="badge badge-secondary">${
+                    }</span>  Transfer out: <span
+                    class="badge badge-light">${
                         val[0] == undefined ? 0 : val[0].total
                     }</span></small>`);
                 });
@@ -319,7 +323,7 @@ $(function () {
     $("#cardForm").hide();
     setTimeout(() => {
         $("#cardForm").fadeIn(1000);
-    },2000);
+    },3000);
     $("#dropdownYear").on("change", function () {
         yearChange = $(this).val();
         fetchYear(yearChange);
