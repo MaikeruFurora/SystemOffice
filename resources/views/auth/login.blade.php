@@ -98,12 +98,12 @@
 {{-- <body style="background-image: url('{{ asset('img/intro1.jpg') }}');background-repeat:no-repeat;background-size:cover">
 --}}
 
-<body style="background: #aabdb3">
+<body style="background: #F8F1E5">
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4 text-left center-screen">
                 <form method="POST" action="{{ route('login') }}">
-                    <div class="card p-2 shadow-lg" style="background: #095169">
+                    <div class="card p-2 shadow-lg" style="background: #426E86">
                         <div class="card-body">
                             <p class="lead text-center mb-2" style="font-size: 25px;color:white">Sign in <br>
                                 <small class="lead text-center" style="font-size: 15px;color:white">to continue to

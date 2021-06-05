@@ -38,7 +38,7 @@
 
 <body>
     {{-- <div id="app"> --}}
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background: #0C0636">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background: black">
             <div class="container">
                 <a class="navbar-brand" href="#">
                     TiTo Management System 
